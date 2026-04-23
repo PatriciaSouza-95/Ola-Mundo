@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Prática - Iniciante</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        /* Seção do Contador */
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .counter-display {
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .counter-number {
+            font-size: 48px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-plus {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-plus:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-minus {
+            background: #f093fb;
+            color: white;
+        }
+
+        .btn-minus:hover {
+            background: #e07be0;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: #ff6b6b;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-reset:hover {
+            background: #ee5a52;
+        }
+
+        /* Seção do Formulário */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #f9f9ff;
+        }
+
+        .btn-submit {
+            background: #51cf66;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #40c057;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Página de Prática</h1>
+        <p class="subtitle">Aprenda HTML, CSS e JavaScript na prática!</p>
+
+        <!-- SEÇÃO 1: CONTADOR -->
+        <div class="section">
+            <h2>1️⃣ Contador Interativo</h2>
+            <div class="counter-display">
+                <div class="counter-number" id="counter">0</div>
+            </div>
+            <div class="button-group">
+                <button class="btn-plus" onclick="aumentarContador()">➕ Aumentar</button>
+                <button class="btn-minus" onclick="diminuirContador()">➖ Diminuir</button>
+            </div>
+            <button class="btn-reset" onclick="resetarContador()">🔄 Resetar</button>
+        </div>
+
+        <!-- SEÇÃO 2: FORMULÁRIO -->
+        <div class="section">
+            <h2>2️⃣ Formulário de Cadastro</h2>
+            <form onsubmit="validarFormulario(event)">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="linguagem">Linguagem Favorita:</label>
+                    <select id="linguagem" required>
+                        <option value="">-- Escolha uma --</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">✅ Enviar</button>
+            </form>
+            <div class="message" id="mensagem"></div>
+        </div>
+    </div>
+
+    <script>
+        // Variável global para armazenar o contador
+        let contadorValor = 0;
+
+        // Função para aumentar o contador
+        function aumentarContador() {
+            contadorValor++;
+            atualizarDisplay();
+        }
+
+        // Função para diminuir o contador
+        function diminuirContador() {
+            contadorValor--;
+            atualizarDisplay();
+        }
+
+        // Função para resetar o contador
+        function resetarContador() {
+            contadorValor = 0;
+            atualizarDisplay();
+        }
+
+        // Função para atualizar a exibição do contador
+        function atualizarDisplay() {
+            document.getElementById('counter').textContent = contadorValor;
+        }
+
+        // Função para validar e processar o formulário
+        function validarFormulario(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Pegar os valores dos campos
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const linguagem = document.getElementById('linguagem').value;
+
+            // Validar se o email é válido
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                mostrarMensagem('❌ Email inválido!', 'error');
+                return;
+            }
+
+            // Se tudo OK, mostrar sucesso
+            mostrarMensagem(`✨ Bem-vindo ${nome}! Você escolheu ${linguagem.toUpperCase()}.`, 'success');
+
+            // Limpar o formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('linguagem').value = '';
+        }
+
+        // Função para mostrar mensagens
+        function mostrarMensagem(texto, tipo) {
+            const mensagem = document.getElementById('mensagem');
+            mensagem.textContent = texto;
+            mensagem.className = `message ${tipo}`;
+        }
+    </script>
+</body>
+</html>
